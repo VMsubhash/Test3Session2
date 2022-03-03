@@ -1,47 +1,52 @@
-#include <stdio.h>
-int input()
+#include<stdio.h>
+int input_degree()
 {
-  int n;
-  printf("Enter the number\n");
-  scanf("%d",&n);
-  return n;
+  int a;
+  scanf("%d",&a);
+  return(a);
 }
-
-void init_array(int n, int a[n])
+int input_x()
 {
-  for(int i=0;i<n;i++)
-    a[i] = i;
-  a[1]=0;
+  float a;
+  scanf("%f",&a);
+  return(a);
 }
-
-void ets(int n, int a[n])
-{
-  int i=0;
-   /* Find next non-zero number */
-  while(i<sqrt(n)){
-   for(;a[i]==0 ;i++);
-   for(int k=i+i;k<n;k += i)
-     a[i] = 0;
-   i++;
-  }
-}
-
-
-void display(int n, int a[n])
+void input_coefficients(int n, float a[n])
 {
   for(int i=0;i<n;i++)
-    if(a[i]!=0)
-      printf("%d ",a[i]);
-  printf("\n");
+    {
+      scanf("%f",&a[i]);
+    }
 }
-
+float evaluate_polynomial(int n, float a[n], float x)
+{
+  float fin=a[0];
+  for(int i=1;i<n;i++)
+    {
+      fin=(fin*x)+a[i];
+    }
+  return(fin);
+}
+void output(int n, float a[n], float x, float result)
+{
+  printf("value of the polynomial for x=%.2f\n%.2f",x,a[n-1]);
+  for(int i=n-2;i>=0;i--)
+    {
+      printf(" + %.2fX^%d ",a[i],n-i-1);
+    }
+  printf(" = %.2f\n",result);
+  
+}
 int main()
 {
-  int n;
-  n=input();
-  int a[n];
-  init_array(n,a);
-  ets(n,a);
-  display(n,a);
-  return 0;
+  printf("enter the degree\n");
+  int n=input_degree()+1;
+  float x,result;
+  printf("enter the value of x\n");
+  x=input_x();
+  float a[n];
+  printf("enter the %d coefficients in decreasing order of degree\n",n);
+  input_coefficients(n,a);
+  result=evaluate_polynomial(n,a,x);
+  output(n,a,x,result);
 }
