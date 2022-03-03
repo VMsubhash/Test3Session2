@@ -1,1 +1,63 @@
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x86b: file p7final.c, line 46.
+(gdb) r
+Starting program: /home/runner/Test3Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p7final.c:46
+46    a=input_fraction();
+(gdb) s
+input_fraction () at p7final.c:23
+23  {
+(gdb) n
+25    scanf("%d %d",&a.n,&a.d);
+(gdb) n
+1 2
+26    return a;
+(gdb) n
+27  }
+(gdb) n
+main () at p7final.c:47
+47    b=input_fraction();
+(gdb) n
+1 4
+48    sum=add_fractions(a,b);
+(gdb) s
+add_fractions (f1=..., f2=...) at p7final.c:32
+32    a.n=(f1.n*f2.d)+(f2.n*f1.d);
+(gdb) n
+33    a.d=(f1.d*f2.d);
+(gdb) n
+34    hcf=gcd(a.d,a.n);
+(gdb) n
+35    a.n=a.n/hcf;
+(gdb) n
+36    a.d=a.d/hcf;
+(gdb) n
+37    return(a);
+(gdb) n
+38  }
+(gdb) n
+main () at p7final.c:49
+49    output(a,b,sum);
+(gdb) p sum
+$1 = {n = 3, d = 4}
+(gdb) n
+1/2 + 1/4 = 3/4
+50  }
+(gdb) n

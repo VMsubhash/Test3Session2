@@ -1,1 +1,142 @@
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x976: file p4final.c, line 41.
+(gdb) r
+Starting program: /home/runner/Test3Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p4final.c:41
+41  {
+(gdb) n
+42    printf("enter the degree\n");
+(gdb) n
+enter the degree
+43    int n=input_degree()+1;
+(gdb) s
+input_degree () at p4final.c:3
+3   {
+(gdb) n
+5     scanf("%d",&a);
+(gdb) n
+3
+6     return(a);
+(gdb) n
+7   }
+(gdb) n
+main () at p4final.c:45
+45    printf("enter the value of x\n");
+(gdb) n
+enter the value of x
+46    x=input_x();
+(gdb) s
+input_x () at p4final.c:9
+9   {
+(gdb) n
+11    scanf("%f",&a);
+(gdb) n
+3
+12    return(a);
+(gdb) n
+13  }
+(gdb) n
+main () at p4final.c:47
+47    float a[n];
+(gdb) n
+48    printf("enter the %d coefficients in decreasing order of degree\n",n);
+(gdb) n
+enter the 4 coefficients in decreasing order of degree
+49    input_coefficients(n,a);
+(gdb) s
+input_coefficients (n=4, a=0x7ffdc4f99e10) at p4final.c:16
+16    for(int i=0;i<n;i++)
+(gdb) n
+18        scanf("%f",&a[i]);
+(gdb) n
+1
+16    for(int i=0;i<n;i++)
+(gdb) n
+18        scanf("%f",&a[i]);
+(gdb) n
+2
+16    for(int i=0;i<n;i++)
+(gdb) n
+18        scanf("%f",&a[i]);
+(gdb) n
+3
+16    for(int i=0;i<n;i++)
+(gdb) n
+18        scanf("%f",&a[i]);
+(gdb) n
+4
+16    for(int i=0;i<n;i++)
+(gdb) n
+20  }
+(gdb) n
+main () at p4final.c:50
+50    result=evaluate_polynomial(n,a,x);
+(gdb) p a
+$1 = {1, 2, 3, 4}
+(gdb) s
+evaluate_polynomial (n=4, a=0x7ffdc4f99e10, x=3) at p4final.c:23
+23    float fin=a[0];
+(gdb) n
+24    for(int i=1;i<n;i++)
+(gdb) n
+26        fin=(fin*x)+a[i];
+(gdb) n
+24    for(int i=1;i<n;i++)
+(gdb) n
+26        fin=(fin*x)+a[i];
+(gdb) n
+24    for(int i=1;i<n;i++)
+(gdb) n
+26        fin=(fin*x)+a[i];
+(gdb) n
+24    for(int i=1;i<n;i++)
+(gdb) n
+28    return(fin);
+(gdb) n
+29  }
+(gdb) n
+main () at p4final.c:51
+51    output(n,a,x,result);
+(gdb) s
+output (n=4, a=0x7ffdc4f99e10, x=3, result=58) at p4final.c:32
+32    printf("value of the polynomial for x=%.2f\n%.2f",x,a[n-1]);
+(gdb) n
+value of the polynomial for x=3.00
+33    for(int i=n-2;i>=0;i--)
+(gdb) n
+35        printf(" + %.2fX^%d ",a[i],n-i-1);
+(gdb) n
+33    for(int i=n-2;i>=0;i--)
+(gdb) n
+35        printf(" + %.2fX^%d ",a[i],n-i-1);
+(gdb) n
+33    for(int i=n-2;i>=0;i--)
+(gdb) n
+35        printf(" + %.2fX^%d ",a[i],n-i-1);
+(gdb) n
+33    for(int i=n-2;i>=0;i--)
+(gdb) n
+37    printf(" = %.2f\n",result);
+(gdb) n
+4.00 + 3.00X^1  + 2.00X^2  + 1.00X^3  = 58.00
+39  }
+(gdb) n
+main () at p4final.c:52
+52  }(gdb) n

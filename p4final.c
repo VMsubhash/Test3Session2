@@ -1,45 +1,52 @@
-/*
-
-Write a program to find nth number in fibonacci sequence.
-Fibonacci sequence consists of 0,1,1,2,3,5,8,13,21........
-int input();
-int find_fibo(int n);
-void output(int n, int fibo);
-
-*/
-
-#include <stdio.h>
-
-int input()
+#include<stdio.h>
+int input_degree()
 {
-  int n;
-  printf("Enter the number\n");
-  scanf("%d",&n);
-  return n;
+  int a;
+  scanf("%d",&a);
+  return(a);
 }
-int find_fibo(int n)
+int input_x()
 {
-  int fibo=0;
-  int a=0;
-  int b=1;
-  for(int i=0;i<n;i++) {
-    fibo = a;
-    a = b;
-    b = fibo + b;
-  }
-  return fibo;
+  float a;
+  scanf("%f",&a);
+  return(a);
 }
-
-
-void output(int n, int fibo)
+void input_coefficients(int n, float a[n])
 {
-  printf("the %dth fibonacci number is %d\n", n, fibo);
+  for(int i=0;i<n;i++)
+    {
+      scanf("%f",&a[i]);
+    }
 }
-
+float evaluate_polynomial(int n, float a[n], float x)
+{
+  float fin=a[0];
+  for(int i=1;i<n;i++)
+    {
+      fin=(fin*x)+a[i];
+    }
+  return(fin);
+}
+void output(int n, float a[n], float x, float result)
+{
+  printf("value of the polynomial for x=%.2f\n%.2f",x,a[n-1]);
+  for(int i=n-2;i>=0;i--)
+    {
+      printf(" + %.2fX^%d ",a[i],n-i-1);
+    }
+  printf(" = %.2f\n",result);
+  
+}
 int main()
 {
-  int n = input();
-  int fibo = find_fibo(n);
-  output(n, fibo);
-  return 0;
+  printf("enter the degree\n");
+  int n=input_degree()+1;
+  float x,result;
+  printf("enter the value of x\n");
+  x=input_x();
+  float a[n];
+  printf("enter the %d coefficients in decreasing order of degree\n",n);
+  input_coefficients(n,a);
+  result=evaluate_polynomial(n,a,x);
+  output(n,a,x,result);
 }

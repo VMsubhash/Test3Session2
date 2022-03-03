@@ -1,52 +1,46 @@
 #include<stdio.h>
-int input_degree()
+int input_size()
 {
   int a;
   scanf("%d",&a);
-  return(a);
+  return a;
 }
-int input_x()
-{
-  float a;
-  scanf("%f",&a);
-  return(a);
-}
-void input_coefficients(int n, float a[n])
+void input_array(int n, int a[n])
 {
   for(int i=0;i<n;i++)
     {
-      scanf("%f",&a[i]);
+      scanf("%d",&a[i]);
     }
 }
-float evaluate_polynomial(int n, float a[n], float x)
+int find_largest(int n, int a[n])
 {
-  float fin=a[0];
+  int larg_id=0,val=a[0];
   for(int i=1;i<n;i++)
     {
-      fin=(fin*x)+a[i];
+      if(val<=a[i])
+      {
+        larg_id=i;
+        val=a[i];
+      }
     }
-  return(fin);
+  return(larg_id);
 }
-void output(int n, float a[n], float x, float result)
+void out_put(int n, int a[n], int largest)
 {
-  printf("value of the polynomial for x=%.2f\n%.2f",x,a[n-1]);
-  for(int i=n-2;i>=0;i--)
+  printf("the index of the largest number from the array\n[");
+  for(int i=0;i<n-1;i++)
     {
-      printf(" + %.2fX^%d ",a[i],n-i-1);
+      printf("%d,",a[i]);
     }
-  printf(" = %.2f\n",result);
-  
+  printf("%d]\nis %d\n",a[n-1],largest);
 }
 int main()
 {
-  printf("enter the degree\n");
-  int n=input_degree()+1;
-  float x,result;
-  printf("enter the value of x\n");
-  x=input_x();
-  float a[n];
-  printf("enter the %d coefficients in decreasing order of degree\n",n);
-  input_coefficients(n,a);
-  result=evaluate_polynomial(n,a,x);
-  output(n,a,x,result);
+  printf("enter the size of the array\n");
+  int n=input_size(),largest;
+  int a[n];
+  printf("enter the %d numbers\n",n);
+  input_array(n,a);
+  largest=find_largest(n,a);
+  out_put(n,a,largest);
 }

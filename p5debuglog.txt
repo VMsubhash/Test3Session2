@@ -1,1 +1,111 @@
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x914: file p5final.c, line 38.
+(gdb) r
+Starting program: /home/runner/Test3Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p5final.c:38
+38  {
+(gdb) n
+39    printf("enter the size of the array\n");
+(gdb) n
+enter the size of the array
+40    int n=input_size(),largest;
+(gdb) s
+input_size () at p5final.c:3
+3   {
+(gdb) n
+5     scanf("%d",&a);
+(gdb) n
+4
+6     return a;
+(gdb) n
+7   }
+(gdb) n
+main () at p5final.c:41
+41    int a[n];
+(gdb) n
+42    printf("enter the %d numbers\n",n);
+(gdb) n
+enter the 4 numbers
+43    input_array(n,a);
+(gdb) s
+input_array (n=4, a=0x7ffd1a1e73b0) at p5final.c:10
+10    for(int i=0;i<n;i++)
+(gdb) n
+12        scanf("%d",&a[i]);
+(gdb) n
+7
+10    for(int i=0;i<n;i++)
+(gdb) n
+12        scanf("%d",&a[i]);
+(gdb) n
+3 
+10    for(int i=0;i<n;i++)
+(gdb) n
+12        scanf("%d",&a[i]);
+(gdb) n
+11
+10    for(int i=0;i<n;i++)
+(gdb) n
+12        scanf("%d",&a[i]);
+(gdb) n
+3 
+10    for(int i=0;i<n;i++)
+(gdb) n
+14  }
+(gdb) n
+main () at p5final.c:44
+44    largest=find_largest(n,a);
+(gdb) p a
+$1 = {7, 3, 11, 3}
+(gdb) s
+find_largest (n=4, a=0x7ffd1a1e73b0) at p5final.c:17
+17    int larg_id=0,val=a[0];
+(gdb) n
+18    for(int i=1;i<n;i++)
+(gdb) n
+20        if(val<=a[i])
+(gdb) n
+18    for(int i=1;i<n;i++)
+(gdb) n
+20        if(val<=a[i])
+(gdb) n
+22          larg_id=i;
+(gdb) n
+23          val=a[i];
+(gdb) n
+18    for(int i=1;i<n;i++)
+(gdb) n
+20        if(val<=a[i])
+(gdb) n
+18    for(int i=1;i<n;i++)
+(gdb) n
+26    return(larg_id);
+(gdb) n
+27  }
+(gdb) n
+main () at p5final.c:45
+45    out_put(n,a,largest);
+(gdb) p largest
+$2 = 2
+(gdb) n
+the index of the largest number from the array
+[7,3,11,3]
+is 2
+46  }(gdb)
